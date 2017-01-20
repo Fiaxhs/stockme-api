@@ -1,0 +1,18 @@
+one:
+  title: MyString
+  description: MyText
+  private: false
+  image: lenna.png
+  secret: potato
+  identifier: a
+
+two:
+  title: MyString
+  description: MyText
+  private: false
+  identifier: b
+
+three:
+  title: title
+  private: true
+  identifier: c
