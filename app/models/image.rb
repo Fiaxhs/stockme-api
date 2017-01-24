@@ -1,7 +1,8 @@
 class Image < ApplicationRecord
   has_and_belongs_to_many :albums
 
-  default_scope { where(private: false) }
+  default_scope { where(private: false).limit(20) }
+  scope :admin, -> { limit(100) }
 
   mount_uploader :image, ImageUploader
 

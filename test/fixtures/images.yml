@@ -11,8 +11,18 @@ two:
   description: MyText
   private: false
   identifier: b
+  image: lenna.png
 
 three:
   title: title
   private: true
   identifier: c
+  image: lenna.png
+
+<% for i in 1..30 %>
+wimg_<%= i %>:
+  title: title
+  private: false
+  identifier: id_<%= i %>
+  image: lenna.png
+<% end %>
