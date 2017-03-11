@@ -27,6 +27,6 @@ module Api
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.action_controller.asset_host = 'http://localhost:3000/'
+    config.action_controller.asset_host = 'http://localhost:4000/'
   end
 end

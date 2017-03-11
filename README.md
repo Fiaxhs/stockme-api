@@ -11,6 +11,8 @@ Note: This project is part of my [12 Months / 12 Side Projects](https://blog.1pp
 * Clone repository
 * Copy `config/database.yml-dist` to `config/database.yml` and configure your database cf [Rails documentation](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database)
 * Copy `config/secrets.yml-dist` to `config/secrets.yml` and change value to something quite unique.
+* Copy `config/initializers/cors.rb-dist` to `config/initializers/cors.rb`
+* Copy `config/application.rb-dist` to `config/application.rb`
 * `./bin/bundle install`
 * `./bin/rails db:setup`
 * `./bin/rails server`

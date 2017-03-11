@@ -1,7 +1,7 @@
 class Image < ApplicationRecord
   has_and_belongs_to_many :albums
 
-  default_scope { where(private: false).limit(20) }
+  default_scope { where(private: false).limit(20).order('created_at desc') }
   scope :admin, -> { limit(100) }
 
   mount_uploader :image, ImageUploader
@@ -26,7 +26,7 @@ class Image < ApplicationRecord
   end
 
   def as_json (options = {})
-    options.merge!({only: [:id, :title, :description], methods: [:thumb_url, :small_url, :url]}) do |key, oldval, newval|
+    options.merge!({only: [:identifier, :title, :description], methods: [:thumb_url, :small_url, :url]}) do |key, oldval, newval|
       (newval.is_a?(Array) ? (oldval + newval) : (oldval << newval)).uniq
     end
     super options

@@ -4,13 +4,13 @@ class ImagesController < ApplicationController
 
   # GET /images
   def index
-    @images = Image.all
+    @images = Image.all.limit(params[:limit] || 20)
     render json: @images
   end
 
   # GET /images/1
   def show
-    render json: @image
+    render json: @image.first
   end
 
   # POST /images
@@ -42,7 +42,7 @@ class ImagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
-      @image = Image.find(params[:id])
+      @image = Image.where(identifier: params[:identifier])
     end
 
     # Only allow a trusted parameter "white list" through.
