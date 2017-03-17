@@ -13,6 +13,11 @@ class Image < ApplicationRecord
 
   before_create :generate_identifier
 
+  # Used for routing helpers
+  def to_param
+    identifier
+  end
+
   def url (option = nil)
     URI.join(ActionController::Base.asset_host, self.image.url(option)).to_s
   end

@@ -71,7 +71,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     end
     @image.save
 
-    patch image_url(@image), params: { secret: 'potato', image: { description: @image.description, private: @image.private, title: @image.title } }, as: :json
+    patch image_url(@image), params: { image: { description: @image.description, private: @image.private, title: @image.title } }, headers: {"X-Image-Secret" => 'potato' }, as: :json
     assert_response 200
   end
 
@@ -86,7 +86,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy image with secret" do
     assert_difference('Image.admin.count', -1) do
-      delete image_url(@image, params: {secret: 'potato'}), as: :json
+      delete image_url(@image), headers: {"X-Image-Secret" => 'potato' }, as: :json
     end
 
     assert_response 204

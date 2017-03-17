@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
 
   # GET /images/1
   def show
-    render json: @image.first
+    render json: @image
   end
 
   # POST /images
@@ -42,7 +42,7 @@ class ImagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
-      @image = Image.where(identifier: params[:identifier])
+      @image = Image.where(identifier: params[:identifier]).first
     end
 
     # Only allow a trusted parameter "white list" through.
@@ -57,7 +57,7 @@ class ImagesController < ApplicationController
 
     # Secret to provide for update/delete
     def check_secret
-      render json: {message: 'Secret missing or invalid'}, status: :forbidden  unless params[:secret] == @image.secret
+      render json: {message: 'Secret missing or invalid'}, status: :forbidden  unless request.headers["X-Image-Secret"] == @image.secret
     end
 end
 
