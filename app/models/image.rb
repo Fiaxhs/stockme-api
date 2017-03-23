@@ -43,7 +43,7 @@ class Image < ApplicationRecord
         Away Balls Bananas Bastard Be Ben Better Blow Bored Boring Boxing Boy Break Breath Brohemian Built Cacophony California
         Carousel Charmer Christmas Clear Coaster College Commercial Country Curve Cynical Dammit Dance Dancing Dangerous Date Day
         Days Dead Death Degenerate Depends Diego Disaster Does Dog Dogs Done Dont Door Down Dumpweed Dysentery Easy Eating Emo
-        Enthused Even Everytime Exist Fallen Falls Family Feeling Fentoozler Fighting First Floor Freak Fuck Fucked Future Gary
+        Enthused Even Everytime Exist Fallen Falls Family Feeling Fentoozler Fighting First Floor Freak Future Gary
         Ghost Girl Give Go Going Gone Good Grandpa Gravity Growing Guy Happy Hearts Her Heres Hey Him Hole Holidays Home Hope If
         Im Interlude Is Its Job Josie Just Kaleidoscope Kids Kings Leave Left Lemmings Letter Lifes Line Lips Little Lonely Longest
         Look Los Lost Love Man Mans Marlboro Matters Me Midnight Miles Mind Miss MMs Mothers Mutt My Myself Natives New Next Night

@@ -29,7 +29,6 @@ class ImagesController < ApplicationController
     if @image.update(image_params)
       render json: @image
     else
-      byebug
       render json: @image.errors, status: :unprocessable_entity
     end
   end
