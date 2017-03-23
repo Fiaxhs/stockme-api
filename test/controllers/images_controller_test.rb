@@ -37,6 +37,14 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil(JSON.parse(response.body)['secret'])
   end
 
+  test "should use secret in headers when creating" do
+    post images_url,
+      params: { image: { description: @image.description, private: @image.private, title: @image.title, image: fixture_file_upload('files/lenna.png', 'image/png') } },
+      headers: {'X-Image-Secret' => @image.secret}
+
+    assert_equal(@image.secret, JSON.parse(response.body)['secret'])
+  end
+
   test "should create image with url" do
     assert_difference('Image.admin.count') do
       post images_url, params: { image: { description: @image.description, private: @image.private, title: @image.title, remote_image_url: 'http://i.imgur.com/JVF33ix.jpg' } }

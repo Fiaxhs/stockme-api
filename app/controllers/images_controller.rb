@@ -51,7 +51,7 @@ class ImagesController < ApplicationController
 
     # Override for image creation
     def create_image_params
-      image_params.merge(params.require(:image).permit(:image, :remote_image_url, :secret))
+      image_params.merge(params.require(:image).permit(:image, :remote_image_url, :secret)).merge({secret: request.headers["X-Image-Secret"]})
     end
 
     # Secret to provide for update/delete
