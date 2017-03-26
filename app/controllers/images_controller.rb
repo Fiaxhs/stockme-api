@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
 
   # GET /images
   def index
-    @images = Image.all.limit(params[:limit] || 20)
+    @images = Image.all.where(private: false).limit(params[:limit] || 20)
     render json: @images
   end
 

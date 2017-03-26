@@ -1,7 +1,7 @@
 class Image < ApplicationRecord
   has_and_belongs_to_many :albums
 
-  default_scope { where(private: false).limit(20).order('created_at desc') }
+  default_scope { limit(20).order('created_at desc') }
   scope :admin, -> { limit(100) }
 
   mount_uploader :image, ImageUploader
@@ -12,6 +12,7 @@ class Image < ApplicationRecord
   has_secure_token :secret
 
   before_create :generate_identifier
+  before_save :default_values
 
   # Used for routing helpers
   def to_param
@@ -59,4 +60,7 @@ class Image < ApplicationRecord
       end
     end
 
+    def default_values
+      self.private ||= false
+    end
 end
