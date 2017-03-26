@@ -31,7 +31,7 @@ class Image < ApplicationRecord
   end
 
   def as_json (options = {})
-    options.merge!({only: [:identifier, :title, :description], methods: [:thumb_url, :small_url, :url]}) do |key, oldval, newval|
+    options.merge!({only: [:identifier, :title, :description, :private], methods: [:thumb_url, :small_url, :url]}) do |key, oldval, newval|
       (newval.is_a?(Array) ? (oldval + newval) : (oldval << newval)).uniq
     end
     super options
