@@ -12,7 +12,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create album" do
     assert_difference('Album.count') do
-      post albums_url, params: { album: { description: @album.description, private: @album.private, title: @album.title } }, as: :json
+      post albums_url, params: { album: { description: @album.description, private: @album.private, title: @album.title , images: [images(:one)]} }, as: :json
     end
 
     assert_response 201

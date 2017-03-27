@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120141955) do
+ActiveRecord::Schema.define(version: 20170327220154) do
 
   create_table "albums", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(version: 20170120141955) do
     t.boolean  "private"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "identifier"
+    t.string   "secret"
+    t.index ["identifier"], name: "index_albums_on_identifier", unique: true, using: :btree
   end
 
   create_table "albums_images", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

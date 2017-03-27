@@ -42,7 +42,7 @@ class AlbumsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_album
-      @album = Album.find(params[:id])
+      @album = Album.where(identifier: params[:identifier]).first
     end
 
     # Only allow a trusted parameter "white list" through.
@@ -52,11 +52,11 @@ class AlbumsController < ApplicationController
 
     # Override for image creation
     def create_album_params
-      album_params.merge(params.merge({secret: request.headers["X-Image-Secret"]})
+      album_params.merge(params.merge({secret: request.headers["X-Image-Secret"]}))
     end
 
     # Secret to provide for update/delete
     def check_secret
-      render json: {message: 'Secret missing or invalid'}, status: :forbidden  unless request.headers["X-Image-Secret"] == @image.secret
+      render json: {message: 'Secret missing or invalid'}, status: :forbidden  unless request.headers["X-Image-Secret"] == @album.secret
     end
 end
