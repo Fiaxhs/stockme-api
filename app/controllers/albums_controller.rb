@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :update, :destroy]
+  before_action :check_secret, only: [:update, :destroy]
 
   # GET /albums
   def index
@@ -47,5 +48,15 @@ class AlbumsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def album_params
       params.require(:album).permit(:title, :description, :private, :images => [])
+    end
+
+    # Override for image creation
+    def create_album_params
+      album_params.merge(params.merge({secret: request.headers["X-Image-Secret"]})
+    end
+
+    # Secret to provide for update/delete
+    def check_secret
+      render json: {message: 'Secret missing or invalid'}, status: :forbidden  unless request.headers["X-Image-Secret"] == @image.secret
     end
 end
