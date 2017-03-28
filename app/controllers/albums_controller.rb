@@ -16,7 +16,9 @@ class AlbumsController < ApplicationController
 
   # POST /albums
   def create
-    @album = Album.new(album_params)
+    @album = Album.new(album_params.except(:images_ids))
+    images = Image.where(identifier: album_params[:images_ids])
+    @album.images = images
 
     if @album.save
       render json: @album, status: :created, location: @album
@@ -47,7 +49,7 @@ class AlbumsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def album_params
-      params.require(:album).permit(:title, :description, :private, :images => [])
+      params.require(:album).permit(:title, :description, :private, images_ids: [])
     end
 
     # Override for image creation
