@@ -5,7 +5,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     if Rails.env.test?
       Rails.root.join("tmp/testupload/")
     else
-      "uploads/img/#{model.identifier}"
+      folder = model.identifier.split(/(?=[A-Z])/).join("/")
+      "uploads/img/#{folder}"
     end
   end
 
