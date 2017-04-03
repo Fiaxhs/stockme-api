@@ -4,6 +4,8 @@ class Album < ApplicationRecord
   has_and_belongs_to_many :images
   has_secure_token :secret
 
+  before_save :truncate
+
   def as_json (options = {})
     options.merge!({
       only: [:identifier, :title, :description, :private],
@@ -18,4 +20,10 @@ class Album < ApplicationRecord
     end
     super options
   end
+
+  private
+    def truncate
+      self.title = self.title[0..254] unless self.title.nil?
+      self.description = self.description[0..65535] unless self.description.nil?
+    end 
 end
