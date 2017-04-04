@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327220154) do
+ActiveRecord::Schema.define(version: 20170404213205) do
 
   create_table "albums", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 20170327220154) do
     t.string   "title"
     t.text     "description", limit: 65535
     t.boolean  "private"
-    t.boolean  "thumb"
-    t.boolean  "small"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "image"
