@@ -12,7 +12,7 @@ class Image < ApplicationRecord
 
   has_secure_token :secret
 
-  before_save :default_values
+  before_save :default_values, :truncate
 
   def url (option = nil)
     URI.join(ActionController::Base.asset_host, self.image.url(option)).to_s
@@ -34,6 +34,11 @@ class Image < ApplicationRecord
   end
 
   private
+    def truncate
+      self.title = self.title[0..254] unless self.title.nil?
+      self.description = self.description[0..65535] unless self.description.nil?
+    end 
+
     def default_values
       self.private ||= false
     end
