@@ -11,9 +11,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
+    process :auto_orient
     process resize_to_limit_gif: [250, 250]
   end
   version :small do
+    process :auto_orient
     process resize_to_limit_gif: [960, 999999]
   end
 
@@ -49,4 +51,9 @@ class ImageUploader < CarrierWave::Uploader::Base
     end
   end
 
+  def auto_orient
+    manipulate! do |img|
+      img = img.auto_orient
+    end
+  end
 end
