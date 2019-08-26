@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '5.2.3'
 gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
@@ -22,7 +22,7 @@ gem 'puma', '~> 3.0'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem 'rack-cors'
+gem 'rack-cors', '1.0.3'
 
 # File upload
 gem 'carrierwave', '~> 1.0'
