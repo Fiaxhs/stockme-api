@@ -22,7 +22,7 @@ gem 'puma', '~> 3.0'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem 'rack-cors', '1.0.3'
+gem 'rack-cors', '1.0.5'
 
 # File upload
 gem 'carrierwave', '~> 1.0'
