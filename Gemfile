@@ -25,7 +25,7 @@ gem 'puma', '~> 3.0'
 gem 'rack-cors', '1.0.5'
 
 # File upload
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'rmagick', '~> 2.16.0'
 
 group :development, :test do
